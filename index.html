@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="AWS Student Portal with Cloud Monitoring - College Internship Project.">
+    <title>Home | AWS Student Portal with Cloud Monitoring</title>
+    <!-- Link to unified stylesheet -->
+    <link rel="stylesheet" href="style.css">
+    <!-- Inline SVG Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎓</text></svg>">
+</head>
+<body>
+
+    <!-- 1. Responsive Navigation Bar -->
+    <header class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="brand-logo">
+                <span>🎓 CampusCloud</span>
+                <span class="brand-badge">AWS Project</span>
+            </a>
+            
+            <!-- Mobile Toggle Button -->
+            <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle Navigation">&#9776;</button>
+
+            <!-- Navigation Links -->
+            <nav>
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="index.html" class="active">Home</a></li>
+                    <li><a href="dashboard.html">Student Dashboard</a></li>
+                    <li><a href="contact.html">Contact Support</a></li>
+                    <li>
+                        <a href="health.html" class="health-pill" title="Server Health Check Endpoint">
+                            <span class="pulse-dot"></span> System Status
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- 2. Main Content Container -->
+    <main class="container">
+        
+        <!-- Hero Section -->
+        <section class="hero-card">
+            <span class="hero-tag">☁️ AWS Cloud Internship Project</span>
+            <h1 class="hero-title">AWS Student Portal with Cloud Monitoring</h1>
+            <p class="hero-subtitle">
+                A modern, responsive university web application built to run on an Amazon EC2 Linux server using Apache, featuring Amazon S3 storage, IAM least-privilege roles, CloudWatch telemetry, and automated cost controls.
+            </p>
+            <div class="hero-buttons">
+                <a href="dashboard.html" class="btn btn-secondary">Open Student Dashboard &rarr;</a>
+                <a href="health.html" class="btn btn-outline" style="color: #ffffff; border-color: rgba(255,255,255,0.4);">
+                    Check System Health (/health)
+                </a>
+            </div>
+        </section>
+
+        <!-- Quick Snapshot Student Stats Row -->
+        <section style="margin-bottom: 2.5rem;">
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <div>
+                        <div class="metric-label">Enrolled Student</div>
+                        <div class="metric-value" style="font-size: 1.35rem;" data-field="studentName">Alex Rivera</div>
+                        <div class="metric-subtext" data-field="studentId">ID: STU-2026-8842</div>
+                    </div>
+                    <div class="metric-icon">👨‍🎓</div>
+                </div>
+
+                <div class="metric-card accent-green">
+                    <div>
+                        <div class="metric-label">Cumulative GPA</div>
+                        <div class="metric-value" data-field="studentGpa">3.84</div>
+                        <div class="metric-subtext">Scale 4.0 &bull; Top 5% Rank</div>
+                    </div>
+                    <div class="metric-icon" style="background-color: #ecfdf5; color: var(--success-green);">🎯</div>
+                </div>
+
+                <div class="metric-card accent-amber">
+                    <div>
+                        <div class="metric-label">Attendance Rate</div>
+                        <div class="metric-value" data-field="studentAttendance">92.5%</div>
+                        <div class="metric-subtext">Satisfies Minimum (75%)</div>
+                    </div>
+                    <div class="metric-icon" style="background-color: #fffbeb; color: var(--warning-amber);">📅</div>
+                </div>
+
+                <div class="metric-card accent-navy">
+                    <div>
+                        <div class="metric-label">Tuition Status</div>
+                        <div class="metric-value" style="font-size: 1.3rem; padding-top: 4px;" data-field="studentFees">Paid in Full</div>
+                        <div class="metric-subtext">Verified & Synced to S3</div>
+                    </div>
+                    <div class="metric-icon" style="background-color: var(--light-blue); color: var(--primary-blue);">💳</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Feature Modules Section -->
+        <section style="margin-bottom: 3rem;">
+            <div style="text-align: center; margin-bottom: 2rem;">
+                <h2 style="font-size: 1.75rem; color: var(--text-dark); font-weight: 700;">Portal Modules & Features</h2>
+                <p style="color: var(--text-muted); font-size: 0.95rem;">Designed for college internship evaluation and practical cloud deployment</p>
+            </div>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem;">
+                <!-- Module 1 -->
+                <div class="card" style="margin-bottom: 0;">
+                    <div style="font-size: 2rem; margin-bottom: 0.75rem;">📊</div>
+                    <h3 style="font-size: 1.15rem; color: var(--text-dark); margin-bottom: 0.4rem;">Student Dashboard</h3>
+                    <p style="font-size: 0.875rem; color: var(--text-muted); margin-bottom: 1rem;">
+                        View your real-time academic status, active courses, syllabus completion progress, and semester standings.
+                    </p>
+                    <a href="dashboard.html" style="color: var(--accent-blue); font-weight: 600; text-decoration: none; font-size: 0.875rem;">
+                        Open Dashboard &rarr;
+                    </a>
+                </div>
+
+                <!-- Module 2 -->
+                <div class="card" style="margin-bottom: 0;">
+                    <div style="font-size: 2rem; margin-bottom: 0.75rem;">🪪</div>
+                    <h3 style="font-size: 1.15rem; color: var(--text-dark); margin-bottom: 0.4rem;">Student Profile & ID</h3>
+                    <p style="font-size: 0.875rem; color: var(--text-muted); margin-bottom: 1rem;">
+                        Official virtual student ID badge, degree requirements, declared major, and academic advisor contact details.
+                    </p>
+                    <a href="dashboard.html" style="color: var(--accent-blue); font-weight: 600; text-decoration: none; font-size: 0.875rem;">
+                        View Profile Info &rarr;
+                    </a>
+                </div>
+
+                <!-- Module 3 -->
+                <div class="card" style="margin-bottom: 0;">
+                    <div style="font-size: 2rem; margin-bottom: 0.75rem;">⏱️</div>
+                    <h3 style="font-size: 1.15rem; color: var(--text-dark); margin-bottom: 0.4rem;">Recent Activities</h3>
+                    <p style="font-size: 0.875rem; color: var(--text-muted); margin-bottom: 1rem;">
+                        Chronological activity log tracking assignment milestones, fee verifications, library loans, and logins.
+                    </p>
+                    <a href="dashboard.html" style="color: var(--accent-blue); font-weight: 600; text-decoration: none; font-size: 0.875rem;">
+                        See Activity Feed &rarr;
+                    </a>
+                </div>
+
+                <!-- Module 4 -->
+                <div class="card" style="margin-bottom: 0;">
+                    <div style="font-size: 2rem; margin-bottom: 0.75rem;">🟢</div>
+                    <h3 style="font-size: 1.15rem; color: var(--text-dark); margin-bottom: 0.4rem;">System Health Check</h3>
+                    <p style="font-size: 0.875rem; color: var(--text-muted); margin-bottom: 1rem;">
+                        Dedicated <code>/health</code> endpoint returning HTTP 200 OK and JSON telemetry for AWS ALB and uptime monitors.
+                    </p>
+                    <a href="health.html" style="color: var(--accent-blue); font-weight: 600; text-decoration: none; font-size: 0.875rem;">
+                        Check /health &rarr;
+                    </a>
+                </div>
+
+                <!-- Module 5 -->
+                <div class="card" style="margin-bottom: 0;">
+                    <div style="font-size: 2rem; margin-bottom: 0.75rem;">✉️</div>
+                    <h3 style="font-size: 1.15rem; color: var(--text-dark); margin-bottom: 0.4rem;">Contact & Helpdesk</h3>
+                    <p style="font-size: 0.875rem; color: var(--text-muted); margin-bottom: 1rem;">
+                        Submit support inquiries directly to IT administration, faculty advisors, or the academic registrar.
+                    </p>
+                    <a href="contact.html" style="color: var(--accent-blue); font-weight: 600; text-decoration: none; font-size: 0.875rem;">
+                        Contact Helpdesk &rarr;
+                    </a>
+                </div>
+
+                <!-- Module 6 -->
+                <div class="card" style="margin-bottom: 0;">
+                    <div style="font-size: 2rem; margin-bottom: 0.75rem;">🛡️</div>
+                    <h3 style="font-size: 1.15rem; color: var(--text-dark); margin-bottom: 0.4rem;">AWS Cloud Ready</h3>
+                    <p style="font-size: 0.875rem; color: var(--text-muted); margin-bottom: 1rem;">
+                        Pre-configured for Apache on Ubuntu EC2, S3 asset syncing, and least-privilege IAM instance profiles.
+                    </p>
+                    <a href="dashboard.html" style="color: var(--accent-blue); font-weight: 600; text-decoration: none; font-size: 0.875rem;">
+                        Explore Portal &rarr;
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Project Overview Architecture Card -->
+        <section class="card" style="background: linear-gradient(135deg, #f8fafc 0%, #eff6ff 100%);">
+            <div class="card-title-bar" style="border-bottom: none; margin-bottom: 0.5rem;">
+                <h2>🏛️ AWS Architecture Overview</h2>
+                <span class="badge badge-blue">College Capstone</span>
+            </div>
+            <p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 1.25rem;">
+                When deployed to AWS, this application is hosted on an <strong>Ubuntu 22.04 EC2 instance</strong> in a custom Amazon VPC. Web access logs are analyzed using Python and automatically archived to an <strong>Amazon S3 private bucket</strong>. Amazon CloudWatch continuously monitors CPU load and sends automated email alerts via <strong>Amazon SNS</strong> if CPU utilization exceeds 70%.
+            </p>
+            <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+                <span class="badge badge-blue">Custom VPC: 10.0.0.0/16</span>
+                <span class="badge badge-green">EC2 Ubuntu (Apache 2.4)</span>
+                <span class="badge badge-amber">Amazon S3 Storage</span>
+                <span class="badge badge-blue">IAM Roles (No Hardcoded Keys)</span>
+                <span class="badge badge-green">100% Free Tier Compliant</span>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- 3. Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4>🎓 CampusCloud Student Portal</h4>
+                    <p>
+                        A beginner-friendly AWS Cloud Internship Project featuring modern full-stack web hosting, automated telemetry monitoring, and secure IAM role architecture.
+                    </p>
+                </div>
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="dashboard.html">Student Dashboard</a></li>
+                        <li><a href="contact.html">Contact Support</a></li>
+                        <li><a href="health.html">Health Check (/health)</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>AWS Technologies</h4>
+                    <ul class="footer-links">
+                        <li>Amazon VPC & Subnets</li>
+                        <li>Amazon EC2 (Ubuntu 22.04)</li>
+                        <li>Amazon S3 Bucket Storage</li>
+                        <li>AWS IAM Roles & Policies</li>
+                        <li>Amazon CloudWatch & SNS</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; <span class="current-year"></span> AWS Student Portal with Cloud Monitoring. Strictly Free Tier.</p>
+                <p>System Status: <span style="color: #34d399; font-weight: 600;">Operational (200 OK)</span></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Link to unified script.js -->
+    <script src="script.js"></script>
+</body>
+</html>

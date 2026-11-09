@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="System Health Check Endpoint for Target Groups, Route 53, and Administrators.">
+    <title>Health Check (/health) | AWS Student Portal</title>
+    <!-- Link to unified stylesheet -->
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🟢</text></svg>">
+</head>
+<body>
+
+    <!-- 1. Navigation Bar -->
+    <header class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="brand-logo">
+                <span>🎓 CampusCloud</span>
+                <span class="brand-badge">AWS Project</span>
+            </a>
+            
+            <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle Navigation">&#9776;</button>
+
+            <nav>
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="dashboard.html">Student Dashboard</a></li>
+                    <li><a href="contact.html">Contact Support</a></li>
+                    <li>
+                        <a href="health.html" class="health-pill active" title="Server Health Check Endpoint">
+                            <span class="pulse-dot"></span> System Status
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- 2. Main Content -->
+    <main class="container">
+        
+        <!-- Main Health Status Banner -->
+        <div class="health-banner">
+            <div style="display: inline-flex; align-items: center; justify-content: center; width: 64px; height: 64px; background-color: #ffffff; border-radius: 50%; color: var(--success-green); font-size: 2rem; margin-bottom: 0.75rem; box-shadow: var(--shadow-sm);">
+                ✓
+            </div>
+            <h1>HTTP 200 OK &bull; System Healthy</h1>
+            <p style="color: #065f46; max-width: 600px; margin: 0 auto; font-size: 0.95rem;">
+                All cloud infrastructure services are online and responding normally. This endpoint (<code>/health</code>) is configured for AWS Application Load Balancers and Route 53 health checking.
+            </p>
+        </div>
+
+        <!-- Infrastructure Diagnostics Grid -->
+        <div class="card">
+            <div class="card-title-bar">
+                <h2>Infrastructure Health Diagnostics</h2>
+                <span class="badge badge-green">ALL PASSING</span>
+            </div>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem;">
+                <div style="background-color: #f8fafc; border: 1px solid var(--border-color); padding: 1rem; border-radius: var(--radius-sm); display: flex; justify-content: space-between; align-items: center;">
+                    <div>
+                        <strong style="color: var(--text-dark);">Apache Web Server</strong><br>
+                        <small style="color: var(--text-muted);">Port 80 &bull; Ubuntu 22.04 LTS</small>
+                    </div>
+                    <span class="badge badge-green">RUNNING</span>
+                </div>
+
+                <div style="background-color: #f8fafc; border: 1px solid var(--border-color); padding: 1rem; border-radius: var(--radius-sm); display: flex; justify-content: space-between; align-items: center;">
+                    <div>
+                        <strong style="color: var(--text-dark);">EC2 Instance Checks</strong><br>
+                        <small style="color: var(--text-muted);">System & Instance Checks</small>
+                    </div>
+                    <span class="badge badge-green">2/2 PASSED</span>
+                </div>
+
+                <div style="background-color: #f8fafc; border: 1px solid var(--border-color); padding: 1rem; border-radius: var(--radius-sm); display: flex; justify-content: space-between; align-items: center;">
+                    <div>
+                        <strong style="color: var(--text-dark);">Amazon S3 Bucket</strong><br>
+                        <small style="color: var(--text-muted);">Asset & Log Sync</small>
+                    </div>
+                    <span class="badge badge-green">CONNECTED</span>
+                </div>
+
+                <div style="background-color: #f8fafc; border: 1px solid var(--border-color); padding: 1rem; border-radius: var(--radius-sm); display: flex; justify-content: space-between; align-items: center;">
+                    <div>
+                        <strong style="color: var(--text-dark);">IAM Role Status</strong><br>
+                        <small style="color: var(--text-muted);">EC2 Instance Profile</small>
+                    </div>
+                    <span class="badge badge-green">AUTHENTICATED</span>
+                </div>
+
+                <div style="background-color: #f8fafc; border: 1px solid var(--border-color); padding: 1rem; border-radius: var(--radius-sm); display: flex; justify-content: space-between; align-items: center;">
+                    <div>
+                        <strong style="color: var(--text-dark);">CloudWatch Telemetry</strong><br>
+                        <small style="color: var(--text-muted);">Metrics & Alarms</small>
+                    </div>
+                    <span class="badge badge-green">STREAMING</span>
+                </div>
+
+                <div style="background-color: #f8fafc; border: 1px solid var(--border-color); padding: 1rem; border-radius: var(--radius-sm); display: flex; justify-content: space-between; align-items: center;">
+                    <div>
+                        <strong style="color: var(--text-dark);">EBS Root Volume</strong><br>
+                        <small style="color: var(--text-muted);">Storage: 20GB gp3</small>
+                    </div>
+                    <span class="badge badge-green">OPTIMAL (15%)</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Raw JSON Response Payload -->
+        <div class="card">
+            <div class="card-title-bar">
+                <h3>Raw JSON Response Payload</h3>
+                <span class="badge badge-blue">application/json</span>
+            </div>
+            <p style="font-size: 0.85rem; color: var(--text-muted);">
+                Sample RESTful JSON health response evaluated by AWS load balancers or automated pingers:
+            </p>
+            <pre class="code-box">
+{
+  "status": "UP",
+  "http_status_code": 200,
+  "service": "student-portal-web-server",
+  "instance_type": "t2.micro / t3.micro (Free Tier)",
+  "aws_region": "us-east-1",
+  "checks": {
+    "apache_service": "OK",
+    "storage_ebs": "OK",
+    "iam_role_auth": "OK",
+    "s3_bucket_access": "OK",
+    "cloudwatch_agent": "OK"
+  },
+  "timestamp": "<span id="liveTimestamp"></span>",
+  "uptime": "99.98%"
+}
+            </pre>
+        </div>
+
+    </main>
+
+    <!-- 3. Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; <span class="current-year"></span> AWS Student Portal with Cloud Monitoring &bull; Health Monitor Service</p>
+                <p><a href="index.html" style="color: #cbd5e1; text-decoration: none;">&larr; Return to Homepage</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Link to unified script.js -->
+    <script src="script.js"></script>
+</body>
+</html>

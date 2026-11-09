@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Student Academic Dashboard - Grades, Courses, Profile and Recent Activities.">
+    <title>Student Dashboard | AWS Student Portal</title>
+    <!-- Link to unified stylesheet -->
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📊</text></svg>">
+</head>
+<body>
+
+    <!-- 1. Navigation Bar -->
+    <header class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="brand-logo">
+                <span>🎓 CampusCloud</span>
+                <span class="brand-badge">AWS Project</span>
+            </a>
+            
+            <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle Navigation">&#9776;</button>
+
+            <nav>
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="dashboard.html" class="active">Student Dashboard</a></li>
+                    <li><a href="contact.html">Contact Support</a></li>
+                    <li>
+                        <a href="health.html" class="health-pill" title="Server Health Check Endpoint">
+                            <span class="pulse-dot"></span> System Status
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- 2. Main Dashboard Content -->
+    <main class="container">
+        
+        <!-- Page Title & Header Bar -->
+        <div class="page-header">
+            <div>
+                <h1>Student Academic Dashboard</h1>
+                <p>Welcome back, <strong data-field="studentName">Alex Rivera</strong>! Here is your real-time academic status.</p>
+            </div>
+            <div style="display: flex; gap: 0.75rem; align-items: center; flex-wrap: wrap;">
+                <div style="background-color: #ffffff; border: 1px solid var(--border-color); padding: 6px 14px; border-radius: var(--radius-sm); font-size: 0.85rem;">
+                    Student ID: <strong data-field="studentId">STU-2026-8842</strong>
+                </div>
+                <button class="btn btn-primary btn-download">
+                    📥 Download S3 Transcript
+                </button>
+            </div>
+        </div>
+
+        <!-- 4 Key Academic Metric Cards -->
+        <section class="metrics-grid">
+            <!-- GPA Card -->
+            <div class="metric-card">
+                <div>
+                    <div class="metric-label">Cumulative GPA</div>
+                    <div class="metric-value" data-field="studentGpa">3.84</div>
+                    <div class="metric-subtext">Scale 4.0 &bull; Top 5% Rank</div>
+                </div>
+                <div class="metric-icon">🎯</div>
+            </div>
+
+            <!-- Attendance Card -->
+            <div class="metric-card accent-green">
+                <div>
+                    <div class="metric-label">Attendance Rate</div>
+                    <div class="metric-value" data-field="studentAttendance">92.5%</div>
+                    <div class="metric-subtext">Satisfies Minimum (75%)</div>
+                </div>
+                <div class="metric-icon" style="background-color: #ecfdf5; color: var(--success-green);">📅</div>
+            </div>
+
+            <!-- Total Credits Card -->
+            <div class="metric-card accent-navy">
+                <div>
+                    <div class="metric-label">Completed Credits</div>
+                    <div class="metric-value" style="font-size: 1.5rem;" data-field="studentCredits">104 / 120</div>
+                    <div class="metric-subtext">Senior Year (Sem 6)</div>
+                </div>
+                <div class="metric-icon" style="background-color: var(--light-blue); color: var(--primary-blue);">📚</div>
+            </div>
+
+            <!-- Fee Status Card -->
+            <div class="metric-card accent-amber">
+                <div>
+                    <div class="metric-label">Tuition Status</div>
+                    <div class="metric-value" style="font-size: 1.35rem; padding-top: 4px;" data-field="studentFees">Paid in Full</div>
+                    <div class="metric-subtext">Receipt archived to S3</div>
+                </div>
+                <div class="metric-icon" style="background-color: #fffbeb; color: var(--warning-amber);">💳</div>
+            </div>
+        </section>
+
+        <!-- Main 2-Column Dashboard Grid -->
+        <div class="grid-2col">
+            
+            <!-- Left Column: Enrolled Courses & Recent Activities -->
+            <div>
+                <!-- Enrolled Course Information Card -->
+                <div class="card">
+                    <div class="card-title-bar">
+                        <h2>Enrolled Courses (Spring 2026)</h2>
+                        <input 
+                            type="text" 
+                            id="courseSearch" 
+                            class="search-input" 
+                            placeholder="🔍 Filter course or instructor..."
+                        >
+                    </div>
+
+                    <div class="table-responsive">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Code</th>
+                                    <th>Course & Instructor</th>
+                                    <th>Credits</th>
+                                    <th>Attendance</th>
+                                    <th>Syllabus Progress</th>
+                                    <th>Standing</th>
+                                </tr>
+                            </thead>
+                            <tbody id="coursesTableBody">
+                                <!-- Populated dynamically by script.js -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Recent Activities Section -->
+                <div class="card">
+                    <div class="card-title-bar">
+                        <h2>⏱️ Recent Activities & Logs</h2>
+                        <span class="badge badge-blue">Audit Feed</span>
+                    </div>
+                    <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1rem;">
+                        Chronological record of recent submissions, fee verifications, and portal access events.
+                    </p>
+
+                    <!-- Timeline target populated by script.js -->
+                    <ul class="activity-feed" id="activityFeed">
+                        <!-- Populated dynamically by script.js -->
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Right Column: Student Profile Widget & Announcements -->
+            <aside>
+                
+                <!-- Virtual Student ID Card -->
+                <div class="id-card-widget">
+                    <div class="id-card-header">
+                        <span>🏛️ CampusCloud University</span>
+                        <span class="badge badge-green" style="font-size: 0.65rem;">ACTIVE STUDENT</span>
+                    </div>
+
+                    <div class="id-card-body">
+                        <div class="avatar-bubble">AR</div>
+                        <div>
+                            <h3 style="font-size: 1.15rem; margin-bottom: 2px;" data-field="studentName">Alex Rivera</h3>
+                            <p style="font-size: 0.8rem; color: #cbd5e1;" data-field="studentMajor">Computer Science & Cloud Systems</p>
+                            <span style="font-size: 0.75rem; background: rgba(255,255,255,0.2); padding: 2px 8px; border-radius: 4px; font-family: monospace;" data-field="studentId">
+                                STU-2026-8842
+                            </span>
+                        </div>
+                    </div>
+
+                    <div style="border-top: 1px solid rgba(255,255,255,0.15); margin-top: 1rem; padding-top: 0.6rem; display: flex; justify-content: space-between; font-size: 0.75rem; color: #cbd5e1;">
+                        <span>Term: <strong>Semester 6</strong></span>
+                        <span>Hosting: <strong>AWS EC2</strong></span>
+                    </div>
+                </div>
+
+                <!-- Student Profile Details Card -->
+                <div class="card">
+                    <div class="card-title-bar">
+                        <h3>👤 Student Profile Details</h3>
+                    </div>
+
+                    <ul class="details-list">
+                        <li>
+                            <span class="label">Full Name</span>
+                            <span class="value" data-field="studentName">Alex Rivera</span>
+                        </li>
+                        <li>
+                            <span class="label">Email Address</span>
+                            <span class="value" data-field="studentEmail">alex.rivera@campus.edu</span>
+                        </li>
+                        <li>
+                            <span class="label">Degree Program</span>
+                            <span class="value" data-field="studentDegree">B.Tech</span>
+                        </li>
+                        <li>
+                            <span class="label">Current Semester</span>
+                            <span class="value" data-field="studentSemester">Semester 6</span>
+                        </li>
+                        <li>
+                            <span class="label">Academic Advisor</span>
+                            <span class="value" data-field="studentAdvisor">Dr. Sarah Mitchell</span>
+                        </li>
+                        <li>
+                            <span class="label">Academic Honor</span>
+                            <span class="value"><span class="badge badge-blue" data-field="studentStatus">Dean's List</span></span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Campus Announcements Card -->
+                <div class="card">
+                    <div class="card-title-bar">
+                        <h3>📢 Announcements</h3>
+                    </div>
+
+                    <div style="margin-bottom: 0.85rem; padding-bottom: 0.75rem; border-bottom: 1px dashed var(--border-color);">
+                        <span class="badge badge-blue">Capstone Review</span>
+                        <h4 style="font-size: 0.875rem; color: var(--text-dark); margin: 4px 0 2px 0;">AWS Project Viva</h4>
+                        <p style="font-size: 0.775rem; color: var(--text-muted);">Presentation scheduled for next Tuesday in Cloud Computing Lab 304.</p>
+                    </div>
+
+                    <div>
+                        <span class="badge badge-green">Fee Status</span>
+                        <h4 style="font-size: 0.875rem; color: var(--text-dark); margin: 4px 0 2px 0;">S3 Receipts Archived</h4>
+                        <p style="font-size: 0.775rem; color: var(--text-muted);">Spring semester verification receipt uploaded to Amazon S3 bucket.</p>
+                    </div>
+                </div>
+
+            </aside>
+
+        </div>
+
+    </main>
+
+    <!-- 3. Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; <span class="current-year"></span> AWS Student Portal with Cloud Monitoring &bull; Apache on Ubuntu EC2</p>
+                <p><a href="health.html" style="color: #cbd5e1; text-decoration: none;">System Status: 200 OK</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Link to unified script.js -->
+    <script src="script.js"></script>
+</body>
+</html>

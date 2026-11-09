@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Contact Student Support and IT Helpdesk.">
+    <title>Contact Support | AWS Student Portal</title>
+    <!-- Link to unified stylesheet -->
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>✉️</text></svg>">
+</head>
+<body>
+
+    <!-- 1. Navigation Bar -->
+    <header class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="brand-logo">
+                <span>🎓 CampusCloud</span>
+                <span class="brand-badge">AWS Project</span>
+            </a>
+            
+            <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle Navigation">&#9776;</button>
+
+            <nav>
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="dashboard.html">Student Dashboard</a></li>
+                    <li><a href="contact.html" class="active">Contact Support</a></li>
+                    <li>
+                        <a href="health.html" class="health-pill" title="Server Health Check Endpoint">
+                            <span class="pulse-dot"></span> System Status
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- 2. Main Content -->
+    <main class="container">
+        
+        <div class="page-header">
+            <div>
+                <h1>Student Support & IT Helpdesk</h1>
+                <p>Have questions regarding your portal access, cloud internship submissions, or course enrollments? Submit a ticket below.</p>
+            </div>
+        </div>
+
+        <div class="grid-2col">
+            
+            <!-- Left Column: Support Form -->
+            <div class="card">
+                <div class="card-title-bar">
+                    <h2>Send a Support Ticket</h2>
+                    <span class="badge badge-blue">Response in 24 Hrs</span>
+                </div>
+
+                <form id="contactForm">
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                        <div class="form-group">
+                            <label for="fullName">Full Name *</label>
+                            <input type="text" id="fullName" class="form-control" value="Alex Rivera" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="studentIdInput">Student ID *</label>
+                            <input type="text" id="studentIdInput" class="form-control" value="STU-2026-8842" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="emailInput">Campus Email *</label>
+                        <input type="email" id="emailInput" class="form-control" value="alex.rivera@campus.edu" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="departmentSelect">Inquiry Department</label>
+                        <select id="departmentSelect" class="form-control">
+                            <option value="cloud">Cloud Computing & Computer Science</option>
+                            <option value="it">IT & Infrastructure Support</option>
+                            <option value="registrar">Academic Registrar Office</option>
+                            <option value="finance">Tuition & Financial Services</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="messageText">Your Message *</label>
+                        <textarea id="messageText" class="form-control" rows="5" placeholder="Describe your question or technical problem..." required></textarea>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">
+                        Submit Support Ticket &rarr;
+                    </button>
+                </form>
+            </div>
+
+            <!-- Right Column: Campus Directory & Information -->
+            <aside>
+                <!-- Helpdesk Info -->
+                <div class="card">
+                    <div class="card-title-bar">
+                        <h3>🏢 IT Support Center</h3>
+                    </div>
+                    <ul class="details-list">
+                        <li>
+                            <span class="label">Location</span>
+                            <span class="value">Tech Complex, Room 204</span>
+                        </li>
+                        <li>
+                            <span class="label">Hours</span>
+                            <span class="value">Mon &ndash; Fri (08:30 AM &ndash; 05:00 PM)</span>
+                        </li>
+                        <li>
+                            <span class="label">Email</span>
+                            <span class="value">helpdesk@campus.edu</span>
+                        </li>
+                        <li>
+                            <span class="label">Phone</span>
+                            <span class="value">+1 (555) 019-2834</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Cloud Lab Info -->
+                <div class="card">
+                    <div class="card-title-bar">
+                        <h3>☁️ Cloud Computing Lab</h3>
+                    </div>
+                    <ul class="details-list">
+                        <li>
+                            <span class="label">Faculty Advisor</span>
+                            <span class="value">Prof. Alan Vance</span>
+                        </li>
+                        <li>
+                            <span class="label">Server Host</span>
+                            <span class="value"><span class="badge badge-green">Ubuntu 22.04 LTS</span></span>
+                        </li>
+                        <li>
+                            <span class="label">AWS Instance</span>
+                            <span class="value">t2.micro / t3.micro</span>
+                        </li>
+                        <li>
+                            <span class="label">Web Engine</span>
+                            <span class="value">Apache 2.4</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Internship Project Note -->
+                <div class="card" style="background-color: var(--light-blue); border-color: var(--blue-border);">
+                    <h4 style="font-size: 0.95rem; color: var(--primary-blue); margin-bottom: 0.4rem;">💡 AWS Internship Note</h4>
+                    <p style="font-size: 0.825rem; color: #1e40af; line-height: 1.5; margin-bottom: 0;">
+                        Form submissions simulate HTTP POST events logged in <code>/var/log/apache2/student_portal_access.log</code>, which can be analyzed using the Python log analysis script.
+                    </p>
+                </div>
+            </aside>
+
+        </div>
+
+    </main>
+
+    <!-- 3. Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; <span class="current-year"></span> AWS Student Portal with Cloud Monitoring &bull; Academic Inquiries</p>
+                <p><a href="index.html" style="color: #cbd5e1; text-decoration: none;">&larr; Return to Homepage</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Link to unified script.js -->
+    <script src="script.js"></script>
+</body>
+</html>
